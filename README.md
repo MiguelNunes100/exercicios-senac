@@ -1,1 +1,1 @@
-# Exerc-cios-Senac
+# Exercícios Senac
