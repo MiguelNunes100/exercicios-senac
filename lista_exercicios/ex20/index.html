@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 20 - Refatoração para Formulários HTML</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .bloco { margin-bottom: 30px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; }
+        h3 { margin-top: 0; }
+        input { margin-bottom: 10px; padding: 5px; }
+        button { padding: 5px 10px; }
+        .resultado { font-weight: bold; color: darkred; margin-top: 10px;}
+    </style>
+</head>
+<body>
+    <h1>Exercício 20: Substituição de prompt por Formulários HTML</h1>
+    <p>Aqui estão as versões refatoradas dos exercícios 5 a 9 interagindo com o DOM em vez do console.</p>
+
+    <div class="bloco">
+        <h3>5. Verificação de Idade</h3>
+        <input type="number" id="idade-input" placeholder="Digite a idade">
+        <button id="btn-ex5">Verificar</button>
+        <p class="resultado" id="res-ex5"></p>
+    </div>
+
+    <div class="bloco">
+        <h3>6. Número Par ou Ímpar</h3>
+        <input type="number" id="numero-input" placeholder="Digite um número">
+        <button id="btn-ex6">Verificar</button>
+        <p class="resultado" id="res-ex6"></p>
+    </div>
+
+    <div class="bloco">
+        <h3>7. Nota do Aluno</h3>
+        <input type="number" id="nota-input" placeholder="Nota (0-10)" min="0" max="10" step="0.1">
+        <button id="btn-ex7">Verificar</button>
+        <p class="resultado" id="res-ex7"></p>
+    </div>
+
+    <div class="bloco">
+        <h3>8. Operador Ternário (Positivo/Negativo)</h3>
+        <input type="number" id="sinal-input" placeholder="Digite um número">
+        <button id="btn-ex8">Verificar</button>
+        <p class="resultado" id="res-ex8"></p>
+    </div>
+
+    <div class="bloco">
+        <h3>9. Tabuada com for</h3>
+        <input type="number" id="tabuada-input" placeholder="Digite um número">
+        <button id="btn-ex9">Gerar</button>
+        <div class="resultado" id="res-ex9"></div>
+    </div>
+
+    <script>
+        // Exercício 5
+        document.getElementById('btn-ex5').addEventListener('click', function() {
+            let idade = parseInt(document.getElementById('idade-input').value);
+            let res = document.getElementById('res-ex5');
+
+            if (isNaN(idade)) res.innerText = "Idade inválida.";
+            else if (idade < 12) res.innerText = "Resultado: Criança";
+            else if (idade >= 12 && idade <= 17) res.innerText = "Resultado: Adolescente";
+            else res.innerText = "Resultado: Adulto";
+        });
+
+        // Exercício 6
+        document.getElementById('btn-ex6').addEventListener('click', function() {
+            let numero = parseInt(document.getElementById('numero-input').value);
+            let res = document.getElementById('res-ex6');
+
+            if (isNaN(numero)) res.innerText = "Número inválido.";
+            else if (numero % 2 === 0) res.innerText = "Resultado: Par";
+            else res.innerText = "Resultado: Ímpar";
+        });
+
+        // Exercício 7
+        document.getElementById('btn-ex7').addEventListener('click', function() {
+            let nota = parseFloat(document.getElementById('nota-input').value);
+            let res = document.getElementById('res-ex7');
+
+            if (isNaN(nota) || nota < 0 || nota > 10) res.innerText = "Nota inválida (0 a 10).";
+            else if (nota >= 7) res.innerText = "Resultado: Aprovado";
+            else if (nota >= 5 && nota < 7) res.innerText = "Resultado: Recuperação";
+            else res.innerText = "Resultado: Reprovado";
+        });
+
+        // Exercício 8
+        document.getElementById('btn-ex8').addEventListener('click', function() {
+            let numero = parseFloat(document.getElementById('sinal-input').value);
+            let res = document.getElementById('res-ex8');
+
+            if (isNaN(numero)) res.innerText = "Número inválido.";
+            else res.innerText = `Resultado: ${numero > 0 ? "Positivo" : (numero < 0 ? "Negativo" : "Zero")}`;
+        });
+
+        // Exercício 9
+        document.getElementById('btn-ex9').addEventListener('click', function() {
+            let num = parseInt(document.getElementById('tabuada-input').value);
+            let res = document.getElementById('res-ex9');
+
+            if (isNaN(num)) {
+                res.innerHTML = "Número inválido.";
+                return;
+            }
+
+            let html = `<strong>Tabuada do ${num}:</strong><br>`;
+            for (let i = 1; i <= 10; i++) {
+                html += `${num} x ${i} = ${num * i}<br>`;
+            }
+            res.innerHTML = html;
+        });
+    </script>
+</body>
+</html>

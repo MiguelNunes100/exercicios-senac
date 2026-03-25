@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 9 - Tabuada</title>
+</head>
+<body>
+    <h1>Exercício 9: Tabuada com FOR</h1>
+    <p>Abra o console (F12) ou recarregue a página para testar novamente.</p>
+    <script>
+        let numStr = prompt("Deseja a tabuada de qual número?");
+        let num = parseInt(numStr);
+
+        if (!isNaN(num)) {
+            console.log(`Tabuada do ${num}:`);
+            for (let i = 1; i <= 10; i++) {
+                console.log(`${num} x ${i} = ${num * i}`);
+            }
+        } else {
+            console.log("Número inválido.");
+        }
+    </script>
+</body>
+</html>

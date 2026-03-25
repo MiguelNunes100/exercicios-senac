@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 5 - Verificação de Idade</title>
+</head>
+<body>
+    <h1>Exercício 5: Verificação de Idade (Prompt)</h1>
+    <p>Abra o console (F12) ou recarregue a página para testar novamente.</p>
+    <script>
+        let entrada = prompt("Qual é a sua idade?");
+        let idadePrompt = parseInt(entrada);
+
+        if (isNaN(idadePrompt)) {
+            console.log("Idade inválida informada.");
+        } else if (idadePrompt < 12) {
+            console.log("Criança");
+        } else if (idadePrompt >= 12 && idadePrompt <= 17) {
+            console.log("Adolescente");
+        } else {
+            console.log("Adulto");
+        }
+    </script>
+</body>
+</html>

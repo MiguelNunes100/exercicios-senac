@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 6 - Par ou Ímpar</title>
+</head>
+<body>
+    <h1>Exercício 6: Par ou Ímpar (Prompt)</h1>
+    <p>Abra o console (F12) ou recarregue a página para testar novamente.</p>
+    <script>
+        let numStr = prompt("Digite um número inteiro:");
+        let numeroPrompt = parseInt(numStr);
+
+        if (isNaN(numeroPrompt)) {
+            console.log("Valor digitado não é um número válido.");
+        } else if (numeroPrompt % 2 === 0) {
+            console.log("O número é Par.");
+        } else {
+            console.log("O número é Ímpar.");
+        }
+    </script>
+</body>
+</html>

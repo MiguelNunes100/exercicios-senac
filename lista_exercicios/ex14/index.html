@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 14 - Método em Objeto</title>
+</head>
+<body>
+    <h1>Exercício 14: Método em Objeto</h1>
+    <p>Abra o console (F12) para ver o resultado.</p>
+    <script>
+        let carro = {
+            marca: "Honda",
+            modelo: "Civic",
+            ano: 2021,
+            descricao: function() {
+                return `Marca: ${this.marca}, Modelo: ${this.modelo}, Ano: ${this.ano}`;
+            }
+        };
+
+        console.log("Resultado do método descricao():");
+        console.log(carro.descricao());
+    </script>
+</body>
+</html>

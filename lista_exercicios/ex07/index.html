@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 7 - Nota do Aluno</title>
+</head>
+<body>
+    <h1>Exercício 7: Nota do Aluno (Prompt)</h1>
+    <p>Abra o console (F12) ou recarregue a página para testar novamente.</p>
+    <script>
+        let notaStr = prompt("Digite a nota do aluno (0 a 10):");
+        let nota = parseFloat(notaStr);
+
+        if (isNaN(nota) || nota < 0 || nota > 10) {
+            console.log("Nota inválida. Digite um valor entre 0 e 10.");
+        } else if (nota >= 7) {
+            console.log("Aprovado");
+        } else if (nota >= 5 && nota < 7) {
+            console.log("Recuperação");
+        } else {
+            console.log("Reprovado");
+        }
+    </script>
+</body>
+</html>

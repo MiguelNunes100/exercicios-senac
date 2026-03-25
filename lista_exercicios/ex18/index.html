@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 18 - sort</title>
+</head>
+<body>
+    <h1>Exercício 18: Ordenação Crescente (sort)</h1>
+    <p>Abra o console (F12) para ver o resultado.</p>
+    <script>
+        let desordenado = [5, 1, 9, 3, 7];
+
+        // A função de comparação (a,b) => a-b é necessária para números,
+        // senão o sort trata os números como strings na ordenação padrão.
+        let ordenado = desordenado.sort(function(a, b) {
+            return a - b;
+        });
+
+        console.log("Array desordenado (original):", [5, 1, 9, 3, 7]);
+        console.log("Array ordenado com sort():", ordenado);
+    </script>
+</body>
+</html>

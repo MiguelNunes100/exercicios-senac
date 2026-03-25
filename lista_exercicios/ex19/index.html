@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 19 - Encadeamento de Métodos</title>
+</head>
+<body>
+    <h1>Exercício 19: Encadeando Métodos de Arrays</h1>
+    <p>Abra o console (F12) para ver o resultado.</p>
+    <script>
+        let array = [2, 5, 8, 11, 14];
+
+        // Filter: > 5
+        // Map: * 2
+        let resultado = array
+            .filter(num => num > 5)
+            .map(num => num * 2);
+
+        console.log("Array original:", array);
+        console.log("Resultado final (maiores que 5 dobrados):", resultado);
+    </script>
+</body>
+</html>

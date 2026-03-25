@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 11 - for...in</title>
+</head>
+<body>
+    <h1>Exercício 11: Percorrendo Objeto com for...in</h1>
+    <p>Abra o console (F12) para ver o resultado.</p>
+    <script>
+        let pessoa = {
+            nome: "João Silva",
+            idade: 30,
+            cidade: "São Paulo"
+        };
+
+        console.log("Propriedades do objeto 'pessoa':");
+        for (let propriedade in pessoa) {
+            console.log(`${propriedade}: ${pessoa[propriedade]}`);
+        }
+    </script>
+</body>
+</html>

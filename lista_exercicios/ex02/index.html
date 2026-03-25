@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 2 - Uso de const</title>
+</head>
+<body>
+    <h1>Exercício 2: Uso de const</h1>
+    <p>Abra o console (F12) para ver os erros gerados pelas constantes.</p>
+    <script>
+        // a. Declarar PI e tentar alterar
+        const PI = 3.14159;
+        try {
+            PI = 3.14; // Erro intencional
+        } catch (erro) {
+            console.error("Erro na letra 'a': Não podemos alterar o valor de uma constante (TypeError).");
+            console.error(erro);
+        }
+
+        // b. Declarar sem atribuir valor
+        // O código abaixo causaria SyntaxError: Missing initializer in const declaration, parando o script todo.
+        // const SemanasDoAno;
+        // SemanasDoAno = 52;
+        console.log("Explicação letra 'b': Declarar 'const SemanasDoAno;' sem valor inicial causa um erro de sintaxe imediato e o script não roda. Por isso está comentado no código fonte.");
+    </script>
+</body>
+</html>

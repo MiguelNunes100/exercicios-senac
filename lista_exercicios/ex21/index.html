@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 21 - Controle de Fila</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #0056b3; }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; color: white; }
+        .btn-entrar { background-color: #28a745; }
+        .btn-atender { background-color: #dc3545; }
+        .btn-entrar:hover { background-color: #218838; }
+        .btn-atender:hover { background-color: #c82333; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .box { background: #e9ecef; padding: 15px; border-radius: 5px; }
+        ul { list-style: none; padding: 0; }
+        li { background: white; margin-bottom: 8px; padding: 10px; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .info { font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercício 21: Controle de Fila de Atendimento</h1>
+
+        <div class="controls">
+            <input type="text" id="nome-input" placeholder="Nome do paciente/cliente">
+            <button class="btn-entrar" id="btn-entrar">Entrar na Fila</button>
+            <button class="btn-atender" id="btn-atender">Atender Próximo</button>
+        </div>
+
+        <div class="grid">
+            <div class="box">
+                <h2>Fila Atual (<span id="contagem">0</span>)</h2>
+                <ul id="lista-fila"></ul>
+            </div>
+
+            <div class="box">
+                <h2>Histórico de Atendimentos</h2>
+                <ul id="lista-historico"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vetores solicitados pelo exercício
+        let vetorFila = [];
+        let vetorHistorico = [];
+
+        // Formatadores
+        const formatadorDataHora = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium' });
+        const formatadorHora = new Intl.DateTimeFormat('pt-BR', { timeStyle: 'medium' });
+
+        const listaFilaDOM = document.getElementById('lista-fila');
+        const listaHistDOM = document.getElementById('lista-historico');
+        const contagemDOM = document.getElementById('contagem');
+        const inputNome = document.getElementById('nome-input');
+
+        function renderizar() {
+            // Atualizar Fila
+            listaFilaDOM.innerHTML = '';
+            contagemDOM.innerText = vetorFila.length;
+
+            if (vetorFila.length === 0) {
+                listaFilaDOM.innerHTML = '<li>A fila está vazia.</li>';
+            } else {
+                for (let pessoa of vetorFila) {
+                    let li = document.createElement('li');
+                    let horaStr = formatadorHora.format(pessoa.dataEntrada);
+                    li.innerHTML = `<strong>${pessoa.nome}</strong><br><span class="info">Chegou às: ${horaStr}</span>`;
+                    listaFilaDOM.appendChild(li);
+                }
+            }
+
+            // Atualizar Histórico
+            listaHistDOM.innerHTML = '';
+            if (vetorHistorico.length === 0) {
+                listaHistDOM.innerHTML = '<li>Nenhum atendimento realizado ainda.</li>';
+            } else {
+                for (let reg of vetorHistorico) {
+                    let li = document.createElement('li');
+                    let entradaStr = formatadorDataHora.format(reg.dataEntrada);
+                    let saidaStr = formatadorDataHora.format(reg.dataSaida);
+                    let esperaSegundos = Math.floor((reg.dataSaida - reg.dataEntrada) / 1000);
+
+                    li.innerHTML = `<strong>${reg.nome}</strong><br>
+                                    <span class="info">
+                                    Entrada: ${entradaStr}<br>
+                                    Saída: ${saidaStr}<br>
+                                    Espera: ${esperaSegundos} segundos
+                                    </span>`;
+                    listaHistDOM.appendChild(li);
+                }
+            }
+        }
+
+        // Adicionar na fila (push)
+        document.getElementById('btn-entrar').addEventListener('click', function() {
+            let nome = inputNome.value.trim();
+            if (nome === "") {
+                alert("Por favor, digite o nome.");
+                return;
+            }
+
+            vetorFila.push({
+                nome: nome,
+                dataEntrada: Date.now()
+            });
+
+            inputNome.value = '';
+            inputNome.focus();
+            renderizar();
+        });
+
+        // Retirar da fila (shift)
+        document.getElementById('btn-atender').addEventListener('click', function() {
+            if (vetorFila.length === 0) {
+                alert("Ninguém na fila.");
+                return;
+            }
+
+            let atendido = vetorFila.shift();
+
+            vetorHistorico.push({
+                nome: atendido.nome,
+                dataEntrada: atendido.dataEntrada,
+                dataSaida: Date.now()
+            });
+
+            renderizar();
+        });
+
+        // Inicializar tela
+        renderizar();
+    </script>
+</body>
+</html>

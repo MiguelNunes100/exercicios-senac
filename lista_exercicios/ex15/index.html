@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 15 - Manipulação de Propriedades</title>
+</head>
+<body>
+    <h1>Exercício 15: Manipulação de Propriedades de Objeto</h1>
+    <p>Abra o console (F12) para ver o resultado.</p>
+    <script>
+        let livro = {
+            titulo: "Harry Potter e a Pedra Filosofal",
+            autor: "J.K. Rowling"
+        };
+        console.log("Objeto original:", Object.assign({}, livro)); // Copia para mostrar o estado inicial
+
+        // a. Adicionar dinamicamente a propriedade ano
+        livro.ano = 1997;
+
+        // b. Alterar o título
+        livro.titulo = "Harry Potter e a Câmara Secreta";
+
+        // c. Excluir a propriedade autor
+        delete livro.autor;
+
+        // d. Mostrar o objeto atualizado
+        console.log("Objeto atualizado:");
+        console.log(livro);
+    </script>
+</body>
+</html>

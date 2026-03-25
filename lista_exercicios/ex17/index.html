@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 17 - filter</title>
+</head>
+<body>
+    <h1>Exercício 17: Filtrar Números Pares (filter)</h1>
+    <p>Abra o console (F12) para ver o resultado.</p>
+    <script>
+        let arrayMisto = [10, 15, 20, 25, 30];
+        let apenasPares = arrayMisto.filter(function(numero) {
+            return numero % 2 === 0;
+        });
+
+        console.log("Array original:", arrayMisto);
+        console.log("Somente pares (filter):", apenasPares);
+    </script>
+</body>
+</html>
