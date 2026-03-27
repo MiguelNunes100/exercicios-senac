@@ -1,0 +1,4 @@
+ably
+supabase
+kaggle
+requests
