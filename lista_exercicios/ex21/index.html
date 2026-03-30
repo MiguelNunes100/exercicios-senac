@@ -45,21 +45,22 @@
     </div>
 
     <script>
-        // Vetores solicitados pelo exercício
+        // Vetores solicitados pelo exercício para armazenar os clientes e o historico
         let vetorFila = [];
         let vetorHistorico = [];
 
-        // Formatadores
+        // Formatadores nativos do JS (Intl API)
         const formatadorDataHora = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium' });
         const formatadorHora = new Intl.DateTimeFormat('pt-BR', { timeStyle: 'medium' });
 
+        // Selecionando os blocos da DOM
         const listaFilaDOM = document.getElementById('lista-fila');
         const listaHistDOM = document.getElementById('lista-historico');
         const contagemDOM = document.getElementById('contagem');
         const inputNome = document.getElementById('nome-input');
 
         function renderizar() {
-            // Atualizar Fila
+            // Atualizar Fila Visual
             listaFilaDOM.innerHTML = '';
             contagemDOM.innerText = vetorFila.length;
 
@@ -74,7 +75,7 @@
                 }
             }
 
-            // Atualizar Histórico
+            // Atualizar Histórico Visual
             listaHistDOM.innerHTML = '';
             if (vetorHistorico.length === 0) {
                 listaHistDOM.innerHTML = '<li>Nenhum atendimento realizado ainda.</li>';
@@ -83,6 +84,7 @@
                     let li = document.createElement('li');
                     let entradaStr = formatadorDataHora.format(reg.dataEntrada);
                     let saidaStr = formatadorDataHora.format(reg.dataSaida);
+                    // O tempo Date.now() retorna millisegundos. Dividimos por 1000 para segundos.
                     let esperaSegundos = Math.floor((reg.dataSaida - reg.dataEntrada) / 1000);
 
                     li.innerHTML = `<strong>${reg.nome}</strong><br>
@@ -104,6 +106,7 @@
                 return;
             }
 
+            // Push() joga pro final do array
             vetorFila.push({
                 nome: nome,
                 dataEntrada: Date.now()
@@ -121,6 +124,7 @@
                 return;
             }
 
+            // Shift() remove do começo do array (quem chegou primeiro sai primeiro)
             let atendido = vetorFila.shift();
 
             vetorHistorico.push({
@@ -132,7 +136,7 @@
             renderizar();
         });
 
-        // Inicializar tela
+        // Inicializar tela renderizando as listas zeradas ao carregar a pagina
         renderizar();
     </script>
 </body>

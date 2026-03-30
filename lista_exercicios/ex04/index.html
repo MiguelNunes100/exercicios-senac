@@ -8,10 +8,10 @@
     <h1>Exercício 4: Diferença de Escopo</h1>
     <p>Abra o console (F12) para ver o resultado.</p>
     <script>
-        let numero = 10;
+        let numero = 10; // Declarado fora do bloco
 
         {
-            let numero = 20;
+            let numero = 20; // Declarado dentro do bloco (escopo local)
             console.log("Valor dentro do bloco:", numero); // Mostra 20
         }
 
